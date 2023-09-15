@@ -5,9 +5,9 @@ import { CacheUtils } from "../utils";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: API.API_URL,
-  prepareHeaders: async (headers: Headers) => {
+  prepareHeaders: (headers: Headers) => {
     // Get Token
-    const token = await CacheUtils.get(CONSTANT.USER_TOKEN_KEY);
+    const token = CacheUtils.get(CONSTANT.USER_TOKEN_KEY);
     if (token) headers.set("Authorization", `Bearer ${token}`);
 
     return headers;

@@ -1,8 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import { DashboardPage, LoginPage } from "../pages";
+import { DashboardPage, LoginPage, UserPage } from "../pages";
 import { AuthLayout } from "../theme";
 import AdminLayout from "../theme/admin/AdminLayout";
-import UserPage from "../pages/Admin/User";
 import SuspenseFallback from "../components/SuspenseFallback";
 
 export const router = createBrowserRouter([

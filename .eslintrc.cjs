@@ -1,11 +1,19 @@
 module.exports = {
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
   root: true,
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:react-hooks/recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime'
   ],
   ignorePatterns: [
     'dist',
@@ -23,6 +31,13 @@ module.exports = {
       { allowConstantExport: true },
     ],
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off'
+    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/no-misused-promises": "off"
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

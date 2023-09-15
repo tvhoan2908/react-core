@@ -13,13 +13,10 @@ export default function LoginPage() {
   const [getUser] = useLazyGetUserQuery();
 
   const onFinish = async (request: FieldType) => {
-    console.log("Success:", request);
     try {
       const data = await login({ username: request.username!, password: request.password! }).unwrap();
-      await Promise.all([
-        CacheUtils.set(CONSTANT.USER_TOKEN_KEY, data.data?.access_token!),
-        CacheUtils.set(CONSTANT.USER_REFRESH_TOKEN_KEY, data.data?.refresh_token!),
-      ]);
+      CacheUtils.set(CONSTANT.USER_TOKEN_KEY, data.data?.access_token!);
+      CacheUtils.set(CONSTANT.USER_REFRESH_TOKEN_KEY, data.data?.refresh_token!);
       getUser(null, false);
     } catch (err) {
       console.error(err);
